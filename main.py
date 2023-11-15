@@ -15,7 +15,7 @@ EPOCHS = 100
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 LEARNRATE = 0.00001
 
-df: DataFrame = pd.read_csv('tools/1.csv', encoding='utf-8')
+df: DataFrame = pd.read_csv('D:/Projects/Datasets/1.csv', encoding='utf-8')
 #
 # df = df.sample(frac=1)
 cut_idx = int(round(0.2 * df.shape[0]))
