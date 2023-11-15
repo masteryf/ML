@@ -4,7 +4,7 @@ from torch import optim
 from torch.utils.data import Dataset
 from pandas.core.frame import DataFrame
 from LoadDataset.ECGDataset import ECGDataset
-from MyModels.FCN import FCN1D
+from MyModels.LNN import NN
 from Test import test
 from Train import train
 
@@ -27,7 +27,7 @@ Test = ECGDataset(df_test)
 train_loader = torch.utils.data.DataLoader(Train, batch_size=BATCH_SIZE, shuffle=True)
 test_loader = torch.utils.data.DataLoader(Test, shuffle=True)
 
-model = FCN1D().to(DEVICE)
+model = NN().to(DEVICE)
 optimizer = optim.Adam(model.parameters())
 
 for epoch in range(1, EPOCHS + 1):
