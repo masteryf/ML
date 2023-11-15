@@ -3,9 +3,9 @@ import pandas as pd
 from torch import optim
 from torch.utils.data import Dataset
 from pandas.core.frame import DataFrame
-from LoadDataset.RandomDataset import MyDataset
+from LoadDataset.ECGDataset import ECGDataset
 from MyModels.FCN import FCN1D
-from Train import test
+from Test import test
 from Train import train
 
 print(torch.cuda.is_available())
@@ -15,18 +15,14 @@ EPOCHS = 100
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 LEARNRATE = 0.00001
 
-# df: DataFrame = pd.read_csv('Datasets/train.csv', encoding='utf-8')
-
+df: DataFrame = pd.read_csv('tools/1.csv', encoding='utf-8')
 #
 # df = df.sample(frac=1)
-# cut_idx = int(round(0.1 * df.shape[0]))
-# df_test, df_train = df.iloc[:cut_idx].reset_index(drop=True), df.iloc[cut_idx:].reset_index(drop=True)
-#
-# print(df_test)
-
-
-Train = MyDataset()
-Test = MyDataset()
+cut_idx = int(round(0.2 * df.shape[0]))
+df_test, df_train = df.iloc[:cut_idx].reset_index(drop=True), df.iloc[cut_idx:].reset_index(drop=True)
+print(df)
+Train = ECGDataset(df_train)
+Test = ECGDataset(df_test)
 
 train_loader = torch.utils.data.DataLoader(Train, batch_size=BATCH_SIZE, shuffle=True)
 test_loader = torch.utils.data.DataLoader(Test, shuffle=True)

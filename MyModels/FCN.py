@@ -5,8 +5,8 @@ from torch.nn import functional as F
 
 class FCN1D(nn.Module):
     def __init__(self):
-        in_channel = 3
-        num_class = 20
+        in_channel = 5
+        num_class = 22
         super().__init__()
         self.conv1 = nn.Conv1d(in_channel, 10, 101, 1, 50)
         self.conv2 = nn.Conv1d(10, 10, 21, 1, 10)
