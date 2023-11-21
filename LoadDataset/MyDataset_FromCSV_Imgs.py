@@ -28,5 +28,5 @@ class MyDataset(Dataset):
     def __getitem__(self, idx: int) -> Tuple[Any, Any]:
         image_tensor, target = self._samples[idx]
         image = Image.fromarray(image_tensor.numpy())
-        image = self.transform(image)
+        # image = self.transform(image)
         return image, target

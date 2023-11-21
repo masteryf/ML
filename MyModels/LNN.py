@@ -8,9 +8,9 @@ class NN(nn.Module):
     def __init__(self):
         super(NN, self).__init__()
         self.fc1 = nn.Linear(5000, 5120)
-        self.bn1 = nn.BatchNorm1d(512)
+        self.bn1 = nn.BatchNorm1d(5120)
         self.fc2 = nn.Linear(5120, 2560)
-        self.bn2 = nn.BatchNorm1d(256)
+        self.bn2 = nn.BatchNorm1d(2560)
         self.fc3 = nn.Linear(2560, 23000)
 
     def forward(self, x):

@@ -25,7 +25,6 @@ class VGG(nn.Module):
 
     def forward(self, x):
         in_size = x.size(0)
-        print(x)
         x = F.relu(self.conv1(x))
         x = F.relu(self.conv2(x))
         x = F.max_pool2d(x, (2, 2), 2)

@@ -1,11 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def ShowWave(data,a,b):
-    values = data[0]
+def ShowWave(data):
+    values = data
 
     # 只选择前一千个数据
-    values_to_plot = values[a:b]
+    values_to_plot = values#[a:b]
 
     # 创建 x 轴的数据，可以使用 np.arange 或者 np.linspace
     x = np.arange(len(values_to_plot))
